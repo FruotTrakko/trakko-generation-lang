@@ -1,0 +1,14 @@
+{
+    "$exposed": "snowflake$id",
+    "$internal": {
+        "$fields": {
+            "id": "snowflake",
+            "name": "string",
+            "email": "email",
+            "password": "string",
+            "contacts": "list$snowflake",
+            "groups": "list$snowflake"
+        }
+    },
+    "$generateDao": true
+}

@@ -1,0 +1,16 @@
+{
+    "$exposed": "long",
+    "$internal": {
+        "$fields": {
+            "timestamp": "bitSet$42",
+            "serviceId": "bitSet$5",
+            "providerId": "bitSet$5",
+            "increment": "bitSet$12"
+        },
+        "$methods": {
+            "$expose": [
+                "$comment:TODO Implment bitSet 'and' combination and return long"
+            ]
+        }
+    }
+}

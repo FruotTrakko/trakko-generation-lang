@@ -1,0 +1,11 @@
+{
+    "$exposed": "snowflake$id",
+    "$internal": {
+        "$fields": {
+            "id": "snowflake",
+            "name": "string",
+            "users": "list$user",
+            "messages": "list$message"
+        }
+    }
+}

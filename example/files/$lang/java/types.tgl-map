@@ -1,0 +1,23 @@
+{
+    "string": {
+        "$map": "java.lang.String",
+        "$needImport": false
+    },
+    "bitSet": {
+        "$map": "java.util.BitSet",
+        "$needImport": true,
+        "$param": [
+            "size"
+        ]
+    },
+    "list": {
+        "$map": "java.util.List",
+        "$needImport": true,
+        "$param": [
+            "type"
+        ],
+        "$generic": [
+            "type"
+        ]
+    }
+}
