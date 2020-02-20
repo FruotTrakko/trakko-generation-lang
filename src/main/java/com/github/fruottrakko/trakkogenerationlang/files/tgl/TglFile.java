@@ -7,10 +7,12 @@ public class TglFile {
     
     private Type exposedType;
     private Internal internalObject;
+    private boolean generateDao;
 
-    protected TglFile(Type exposedType, Internal internalObject) {
+    protected TglFile(Type exposedType, Internal internalObject, boolean generateDao) {
         this.exposedType = exposedType;
         this.internalObject = internalObject;
+        this.generateDao = generateDao;
     }
 
     public Type getExposedType() {
@@ -19,6 +21,10 @@ public class TglFile {
 
     public Internal getInternalObject() {
         return this.internalObject;
+    }
+
+    public boolean getGenerateDao() {
+        return this.generateDao;
     }
 
 }

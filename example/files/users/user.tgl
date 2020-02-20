@@ -9,5 +9,6 @@
             "contacts": "list$snowflake",
             "groups": "list$snowflake"
         }
-    }
+    },
+    "$generateDao": true
 }

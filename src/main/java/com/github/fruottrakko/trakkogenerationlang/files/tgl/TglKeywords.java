@@ -6,7 +6,8 @@ public enum TglKeywords {
     INTERNAL("$internal"),
     FIELDS("$fields"),
     METHODS("$methods"),
-    EXPOSE("$expose");
+    EXPOSE("$expose"),
+    GENERATE_DAO("$generateDao");
 
     private String name;
 

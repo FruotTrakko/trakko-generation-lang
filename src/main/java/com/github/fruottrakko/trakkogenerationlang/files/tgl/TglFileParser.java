@@ -18,8 +18,8 @@ public class TglFileParser {
 
     private static final boolean SPLITERATOR_PARALLEL = false;
 
-    public static TglFile getTglFile(String exposedType, Map<String, String> fields, Map<String, String[]> methods) {
-        return new TglFile(TypeParser.getType(exposedType), new Internal(fields, methods));
+    public static TglFile getTglFile(String exposedType, Map<String, String> fields, Map<String, String[]> methods, boolean generateDao) {
+        return new TglFile(TypeParser.getType(exposedType), new Internal(fields, methods), generateDao);
     }
 
     public static TglFile getTglFile(String jsonString) {
@@ -45,7 +45,15 @@ public class TglFileParser {
             //nothing to do here. methods will be an empty map.
         }
 
-        return getTglFile(jsonObject.get(TglKeywords.EXPOSED.getName()).getAsString(), fields, methods);
+        JsonElement generateDaoElement = jsonObject.get(TglKeywords.GENERATE_DAO.getName());
+        boolean generateDao;
+        if (generateDaoElement == null) {
+            generateDao = false;
+        } else {
+            generateDao = generateDaoElement.getAsBoolean();
+        }
+
+        return getTglFile(jsonObject.get(TglKeywords.EXPOSED.getName()).getAsString(), fields, methods, generateDao);
     }
 
     public static TglFile getTglFile(Path tglFile) {
