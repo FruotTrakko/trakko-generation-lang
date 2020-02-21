@@ -5,7 +5,7 @@ import java.util.stream.Stream;
 
 public class DaoDirectoryCreator {
     
-    private static final String DAO_PACKAGE_NAME = "dao";
+    private final static String DAO_PACKAGE_NAME = "dao";
 
     //Generate Dirs: filename.dao.<dbnames>
 

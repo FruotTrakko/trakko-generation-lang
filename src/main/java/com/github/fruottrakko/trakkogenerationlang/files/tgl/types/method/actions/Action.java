@@ -4,6 +4,8 @@ import java.util.NoSuchElementException;
 
 public class Action {
 
+    private final static String ACTION_VALUE_SEPARATOR = ":";
+
     private ActionType type;
     private String value;
 
@@ -17,7 +19,7 @@ public class Action {
     }
 
     public Action(String descriptor) throws ArrayIndexOutOfBoundsException{
-        this(descriptor.split(":")[0], descriptor.split(":")[1]);
+        this(descriptor.split(ACTION_VALUE_SEPARATOR)[0], descriptor.split(ACTION_VALUE_SEPARATOR)[1]);
     }
 
     public ActionType getActionType() {
