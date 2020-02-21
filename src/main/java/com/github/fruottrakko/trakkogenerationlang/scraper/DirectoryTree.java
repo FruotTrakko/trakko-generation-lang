@@ -48,4 +48,24 @@ public class DirectoryTree {
             });
     }
 
+    public void cleanupDirectory(Path cleanupPath) {
+        if (this.childDirectoryTrees.length != 0) {
+            return;
+        }
+
+        if (getDirectoryPath(cleanupPath).toFile().listFiles().length != 0) {
+            return;
+        }
+
+        getDirectoryPath(cleanupPath).toFile().delete();
+    }
+
+	public void cleanupDirectoriesRecursive(Path cleanupPath) {
+        cleanupDirectory(cleanupPath);
+        getChildDirectoryTreesAsList().parallelStream()
+            .forEach((tree) -> {
+                tree.cleanupDirectoriesRecursive(getDirectoryPath(cleanupPath));
+            });
+	}
+
 }
