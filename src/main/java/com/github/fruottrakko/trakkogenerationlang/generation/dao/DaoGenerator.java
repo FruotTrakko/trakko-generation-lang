@@ -3,6 +3,7 @@ package com.github.fruottrakko.trakkogenerationlang.generation.dao;
 import java.nio.file.Path;
 
 import com.github.fruottrakko.trakkogenerationlang.files.tgl.TglFile;
+import com.github.fruottrakko.trakkogenerationlang.files.tglmap.TypeAtlases;
 
 public class DaoGenerator {
 
@@ -11,7 +12,7 @@ public class DaoGenerator {
     //Generate Dao Interface source file        -> Copy header into source file
     //Generate Database specific Dao Implmentations (type-atlas (v.2?))
 
-    public static void generateDaoFromTgl(TglFile tglFile, Path destinationPath) {
+    public static void generateDaoFromTgl(TglFile tglFile, Path destinationPath, TypeAtlases typeAtlases) {
         //TODO: Call Submethods
     }
 
