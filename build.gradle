@@ -18,6 +18,7 @@ plugins {
 }
 
 version = '1.0.0';
+group = 'com.github.fruottrakko'
 
 sourceCompatibility = 1.11
 targetCompatibility = 1.11
