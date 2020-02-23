@@ -7,16 +7,15 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.net.URLClassLoader;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Optional;
 import java.util.jar.JarEntry;
 import java.util.jar.JarInputStream;
 
 public class ModuleLoader {
 
     //TODO REFACTORING
-    public static List<BaseModule> loadModulesFromFile(File jarFile) throws FileNotFoundException, IOException {
-        List<BaseModule> result = new ArrayList<BaseModule>();
+    public static Optional<LangModule> loadModuleFromFile(File jarFile) throws FileNotFoundException, IOException {
+        LangModule result = null;
 
         ClassLoader classLoader = new URLClassLoader(new URL[] { jarFile.toURI().toURL() });
 
@@ -33,8 +32,8 @@ public class ModuleLoader {
                         .loadClass(jarEntry.getName().substring(0, jarEntry.getName().length() - 6).replace('/', '.'));
 
                 for (Class<?> interfaces : cls.getInterfaces()) {
-                    if (interfaces.equals(BaseModule.class)) {
-                        result.add(((Class<BaseModule>) cls).getDeclaredConstructor().newInstance());
+                    if (interfaces.equals(LangModule.class)) {
+                        result = (LangModule) cls.getDeclaredConstructor().newInstance();
                     }
                 }
             } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | IllegalArgumentException
@@ -45,7 +44,7 @@ public class ModuleLoader {
         }
 
         jarInputStream.close();
-        return result;
+        return Optional.ofNullable(result);
     }
 
 }

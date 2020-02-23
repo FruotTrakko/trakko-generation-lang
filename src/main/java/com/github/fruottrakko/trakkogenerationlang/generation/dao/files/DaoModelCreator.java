@@ -7,10 +7,11 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Arrays;
+import java.util.Optional;
 
 import com.github.fruottrakko.trakkogenerationlang.files.tgl.types.Fields;
 import com.github.fruottrakko.trakkogenerationlang.files.tglmap.TypeAtlases;
-import com.github.fruottrakko.trakkogenerationlang.generation.dao.modules.DaoModelWriterModule;
+import com.github.fruottrakko.trakkogenerationlang.modules.LangModule;
 import com.github.fruottrakko.trakkogenerationlang.modules.Modules;
 
 public class DaoModelCreator {
@@ -31,8 +32,12 @@ public class DaoModelCreator {
             throw new IOException(ex);
         }
 
-        DaoModelWriterModule modelWriterModule = Modules.getModule(DaoModelWriterModule.class, languageName);
-        modelWriterModule.writeDaoModelFileContent(modelFile, modelFields, typeAtlases.getLangTypeAtlas(languageName));
+        Optional<LangModule> langModule = Modules.getModule(languageName);
+        if (langModule.isEmpty()) {
+            throw new IOException(String.format("Language module '%s' coudn't ne found or loaded.", languageName));
+        }
+
+        langModule.get().writeDaoModelFileContent(modelFile, modelFields, typeAtlases.getLangTypeAtlas(languageName));
     }
 
 }
