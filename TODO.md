@@ -1,6 +1,9 @@
 add logger
 add logging for each step
 -> espacially file creation and path resolving
+
+add user hint to issue reporting on error
+
 add DaoGenerator functionality
 
 add fileHeader template replacement

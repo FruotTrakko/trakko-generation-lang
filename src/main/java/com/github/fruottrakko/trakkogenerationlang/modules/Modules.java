@@ -1,7 +1,6 @@
 package com.github.fruottrakko.trakkogenerationlang.modules;
 
 import java.io.File;
-import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.Map;
 import java.util.Optional;
@@ -14,14 +13,9 @@ public class Modules {
 
     static {
         for (File moduleFile : Paths.get(MODULE_PATH).toFile().listFiles(new JarFileFilter())) {
-            try {
-                ModuleLoader.loadModuleFromFile(moduleFile).ifPresent(module -> {
-                    langModules.put(module.getLanguageName(), module);
-                });
-            } catch (IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
+            ModuleLoader.loadModuleFromFile(moduleFile).ifPresent(module -> {
+                langModules.put(module.getLanguageName(), module);
+            });
         }
     }
 
