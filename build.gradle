@@ -18,7 +18,7 @@ plugins {
 }
 
 version = '1.0.0';
-group = 'com.github.fruottrakko'
+group = 'com.github.thedrakonir'
 
 sourceCompatibility = 1.11
 targetCompatibility = 1.11
@@ -42,5 +42,5 @@ dependencies {
 
 application {
     // Define the main class for the application
-    mainClassName = 'com.github.fruottrakko.trakkogenerationlang.TrakkoGenerationLang'
+    mainClassName = 'com.github.thedrakonir.trakkogenerationlang.TrakkoGenerationLang'
 }
